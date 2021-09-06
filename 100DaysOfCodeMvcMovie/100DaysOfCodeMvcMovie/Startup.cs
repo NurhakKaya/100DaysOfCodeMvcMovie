@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using _100DaysOfCodeMvcMovie.Data;
 
 namespace _100DaysOfCodeMvcMovie
 {
@@ -24,6 +26,9 @@ namespace _100DaysOfCodeMvcMovie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<_100DaysOfCodeMvcMovieContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("_100DaysOfCodeMvcMovieContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
