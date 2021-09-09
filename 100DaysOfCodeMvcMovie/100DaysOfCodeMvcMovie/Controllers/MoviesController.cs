@@ -17,14 +17,14 @@ namespace _100DaysOfCodeMvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string id)
         {
             var movies = from m in _context.Movie
                          select m;
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(id))
             {
-                movies = movies.Where(x => x.Title.Contains(searchString));
+                movies = movies.Where(x => x.Title.Contains(id));
             }
 
             return View(await movies.ToListAsync());
